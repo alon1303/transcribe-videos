@@ -13,5 +13,5 @@ def read_root():
 
 @app.put("/video/subtitles")
 def get_video_subtitles(file_path: str) -> List[Subtitle]:
-    print(get_subtitles(file_path))
+    print("new video added")
     return get_subtitles(file_path)

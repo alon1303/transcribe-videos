@@ -8,9 +8,10 @@ model = WhisperModel(model_size, device="cpu", compute_type="int8")
 
 def get_subtitles(file_path: str) -> List[Subtitle]:
     try:            
-        segments, info = model.transcribe(file_path, beam_size=5, language="en")
+        segments, info = model.transcribe(file_path, beam_size=5, language="en", word_timestamps=True)
         subtitles: List[Subtitle] = []
         for segment in segments:
+            print(segment.text)
             subtitle: Subtitle = Subtitle(                
                 id=len(subtitles),
                 startTime=segment.start,
